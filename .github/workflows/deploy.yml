@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # Запускать при изменениях в ветке main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18 # Если у вас другая версия, поменяйте
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+        env:
+          # ВАЖНО: Название переменной слева зависит от вашего проекта!
+          # Если вы используете Vite, то название будет VITE_GEMINI_API_KEY
+          # Если Create React App - REACT_APP_GEMINI_API_KEY
+          # Уточните это в вашем коде или документации проекта.
+          VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # ВАЖНО: Укажите папку, в которую собирается ваш проект.
+          # Обычно это 'dist', но может быть 'build' или 'out'.
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

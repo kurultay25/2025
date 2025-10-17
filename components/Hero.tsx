@@ -29,9 +29,9 @@ export const Hero: React.FC<HeroProps> = ({ t, countries }) => {
     const isVisible = useOnScreen(ref);
 
     return (
-        <section ref={ref} className="relative min-h-screen flex items-center justify-center py-20 px-4 overflow-hidden">
+        <section ref={ref} className="relative min-h-screen flex items-center justify-center py-16 px-4 overflow-hidden">
             <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                className="absolute inset-0 bg-contain bg-center bg-no-repeat"
                 style={{ backgroundImage: `url('https://static.tildacdn.pro/tild3563-6238-4665-b263-613965663430/front-view-businessm.jpg')` }}
             ></div>
             <div className="absolute inset-0 bg-gray-950/40"></div>

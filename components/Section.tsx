@@ -13,7 +13,7 @@ export const Section: React.FC<SectionProps> = ({ title, subtitle, bgClassName =
     const isVisible = useOnScreen(ref, '-100px');
     
     return (
-        <section ref={ref} className={`py-20 md:py-28 ${bgClassName}`}>
+        <section ref={ref} className={`py-16 md:py-20 ${bgClassName}`}>
             <div className="container mx-auto px-6">
                 <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
                     <h2 className="text-xl md:text-2xl font-extrabold text-white mb-4">{title}</h2>

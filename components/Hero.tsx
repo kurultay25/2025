@@ -31,13 +31,13 @@ export const Hero: React.FC<HeroProps> = ({ t, countries }) => {
     return (
         <section ref={ref} className="relative min-h-screen flex items-center justify-center py-16 px-4 overflow-hidden">
             <div 
-                className="absolute inset-0 bg-contain bg-center bg-no-repeat"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url('https://static.tildacdn.pro/tild3563-6238-4665-b263-613965663430/front-view-businessm.jpg')` }}
             ></div>
             <div className="absolute inset-0 bg-gray-950/40"></div>
 
             <div className={`relative z-10 container mx-auto text-center text-white transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-10" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+                <h1 className="text-2xl md:text-3xl font-extrabold leading-tight mb-10" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
                     {t('main_title')}
                 </h1>
 
